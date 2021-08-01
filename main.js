@@ -28,6 +28,13 @@ var colorNames = [
         if (color === "green") return this.green;
         if (color === "blue") return this.blue;
       },
+      getRGB() {
+        let rgb = `${this.red},${this.green},${this.blue}`;
+        fetch(`http://www.thecolorapi.com/id?rgb=${rgb}`)
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+        return rgb;
+      },
       getBG: function (color) {
         if (color === "red")
           return { background: "rgb(" + this.red + "," + 0 + "," + 0 + ")" };
@@ -61,6 +68,7 @@ var colorNames = [
         if (this.checkStatus.blue) this.incColor("blue");
 
         if (this.checkStatus.green) this.incColor("green");
+        console.log(this.getRGB());
       },
 
       decAll: function () {
@@ -69,6 +77,7 @@ var colorNames = [
         if (this.checkStatus.green) this.decColor("green");
 
         if (this.checkStatus.blue) this.decColor("blue");
+        console.log(this.getRGB());
       },
       reset: function () {
         this.red = 0;
@@ -108,6 +117,7 @@ var colorNames = [
           if (blue > -1) this.blue = blue;
           else this.blue = blue + 1;
         }
+        console.log(this.getRGB());
       },
     },
   });
