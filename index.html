@@ -15,11 +15,14 @@
 </head>
 
 <body>
-    <div id="app" class="w-100 h-100">
-        <div id="main">
-            <span>STEP</span>
-            <input type="number" v-model.number="step" />
-            <div>
+    <div id="app">
+        <div class="container" style="height: 400px;">
+
+            <div class="row">
+                <span>STEP</span>
+                <input type="number" v-model.number="step" />
+            </div>
+            <div class="row">
                 <div v-for="color in colors" class="d-flex">
                     <input type="checkbox" v-model="checkStatus[color]" />
                     <span class="">
@@ -31,27 +34,30 @@
                 </div>
             </div>
 
-        </div>
 
-        <div id="color-change" class="d-flex justify-content-around">
-            <button id="inc" @click="decAll()">
-                <span>-</span>
-                <button @click="generateRandomColor()" class="random-btn">
+            <div id="color-change" class="row">
+                <button class="btn btn-primary m-2" id="inc" @click="decAll()">
+                    <span>-</span>
+                </button>
+                <button class="btn btn-primary m-2" @click="generateRandomColor()" class="random-btn">
                     <span> random color </span>
                 </button>
-                <button id="dec" @click="incAll()">
-                    +
+                <button class="btn btn-primary m-2" id="dec" @click="incAll()">
+                    <span>+</span>
                 </button>
 
-        </div>
-        <div class="w-100 h-25" id="rgb-color" :style="{background:'rgb('+red+','+green+','+blue+')'}">
+            </div>
+            <div class="row h-25" id="rgb-color" :style="{background:'rgb('+red+','+green+','+blue+')'}">
 
+            </div>
+            <div class="row">
+                <button type="button" id="reset" @click="reset()" class="btn btn-danger mt-2 btn-block">
+                    RESET
+                </button>
+            </div>
         </div>
-
-        <button type="button" id="reset" @click="reset()" class="btn btn-danger mr-5">
-            RESET
-        </button>
     </div>
+
     <script src="main.js"></script>
 </body>
 
