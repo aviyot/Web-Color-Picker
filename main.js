@@ -19,6 +19,8 @@ var colorNames = [
         green: true,
         blue: true,
       },
+      colorData: null,
+      closestColorData: null,
       colors: ["red", "green", "blue"],
       //cn:colorNames
     },
@@ -32,7 +34,20 @@ var colorNames = [
         let rgb = `${this.red},${this.green},${this.blue}`;
         fetch(`http://www.thecolorapi.com/id?rgb=${rgb}`)
           .then((response) => response.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            this.colorData = data;
+            console.log(this.colorData.rgb.value);
+            fetch(
+              `http://www.thecolorapi.com/id?hex=${this.colorData.name.closest_named_hex.slice(
+                1
+              )}`
+            )
+              .then((res) => res.json())
+              .then((res) => {
+                this.closestColorData = res;
+                console.log(this.closestColorData.rgb.value);
+              });
+          });
         return rgb;
       },
       getBG: function (color) {
@@ -50,6 +65,7 @@ var colorNames = [
         if (color === "red") this.red = value;
         if (color === "green") this.green = value;
         if (color === "blue") this.blue = value;
+        console.log(this.getRGB());
       },
 
       incColor: function (color) {
@@ -87,6 +103,7 @@ var colorNames = [
         this.checkStatus.red = true;
         this.checkStatus.green = true;
         this.checkStatus.blue = true;
+        console.log(this.getRGB());
       },
       max: function (next) {
         return next + this.step > 256;

@@ -47,8 +47,19 @@
                 </button>
 
             </div>
-            <div class="row h-25" id="rgb-color" :style="{background:'rgb('+red+','+green+','+blue+')'}">
+            <div class="h-50" id="rgb-color" :style="{background:'rgb('+red+','+green+','+blue+')'}">
+                <span v-if="colorData">
+                    <span :style="{color:colorData.contrast.value}">
+                        {{colorData.rgb.value}}</br>
+                        {{colorData.hsl.value}}</br>
+                        {{colorData.hex.value}}</br>
 
+                        color name : {{colorData.name.value}} > <span v-if="closestColorData">
+                            {{closestColorData.rgb.value}}</span> </br>
+                        exact match name : {{colorData.name.exact_match_name}}</br>
+                        distance:{{colorData.name.distance}}</br>
+                    </span>
+                </span>
             </div>
             <div class="row">
                 <button type="button" id="reset" @click="reset()" class="btn btn-danger mt-2 btn-block">
