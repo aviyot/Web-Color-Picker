@@ -134,6 +134,7 @@ var colorNames = [
           if (blue > -1) this.blue = blue;
           else this.blue = blue + 1;
         }
+        //
         console.log(this.getRGB());
       },
     },
