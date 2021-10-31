@@ -29,11 +29,12 @@
             </div>
 
             <div class="my-4">
+                <div>
+                    <span for="step">STEP</span>
+                    <input id="step" class="form-control" type="number" v-model.number="step" />
+                </div>
                 <div id="color-change" class="row">
-                    <div class="col">
-                        <span for="step">STEP</span>
-                        <input id="step" class="form-control" type="number" v-model.number="step" />
-                    </div>
+
                     <div class="col">
                         <button class="btn btn-primary m-2" id="inc" @click="decAll()">
                             <span>-</span>
