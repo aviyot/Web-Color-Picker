@@ -32,13 +32,13 @@ var colorNames = [
       },
       getRGB() {
         let rgb = `${this.red},${this.green},${this.blue}`;
-        fetch(`http://www.thecolorapi.com/id?rgb=${rgb}`)
+        fetch(`https://www.thecolorapi.com/id?rgb=${rgb}`)
           .then((response) => response.json())
           .then((data) => {
             this.colorData = data;
             console.log(this.colorData.rgb.value);
             fetch(
-              `http://www.thecolorapi.com/id?hex=${this.colorData.name.closest_named_hex.slice(
+              `https://www.thecolorapi.com/id?hex=${this.colorData.name.closest_named_hex.slice(
                 1
               )}`
             )
