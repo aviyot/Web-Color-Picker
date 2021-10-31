@@ -24,6 +24,9 @@ var colorNames = [
       colors: ["red", "green", "blue"],
       //cn:colorNames
     },
+    mounted() {
+      this.generateRandomColor();
+    },
     methods: {
       getColor: function (color) {
         if (color === "red") return this.red;
@@ -36,7 +39,6 @@ var colorNames = [
           .then((response) => response.json())
           .then((data) => {
             this.colorData = data;
-            console.log(this.colorData.rgb.value);
             fetch(
               `https://www.thecolorapi.com/id?hex=${this.colorData.name.closest_named_hex.slice(
                 1
@@ -45,7 +47,6 @@ var colorNames = [
               .then((res) => res.json())
               .then((res) => {
                 this.closestColorData = res;
-                console.log(this.closestColorData.rgb.value);
               });
           });
         return rgb;
@@ -65,7 +66,7 @@ var colorNames = [
         if (color === "red") this.red = value;
         if (color === "green") this.green = value;
         if (color === "blue") this.blue = value;
-        console.log(this.getRGB());
+        this.getRGB();
       },
 
       incColor: function (color) {
@@ -84,7 +85,7 @@ var colorNames = [
         if (this.checkStatus.blue) this.incColor("blue");
 
         if (this.checkStatus.green) this.incColor("green");
-        console.log(this.getRGB());
+        this.getRGB();
       },
 
       decAll: function () {
@@ -93,7 +94,7 @@ var colorNames = [
         if (this.checkStatus.green) this.decColor("green");
 
         if (this.checkStatus.blue) this.decColor("blue");
-        console.log(this.getRGB());
+        this.getRGB();
       },
       reset: function () {
         this.red = 0;
@@ -103,7 +104,7 @@ var colorNames = [
         this.checkStatus.red = true;
         this.checkStatus.green = true;
         this.checkStatus.blue = true;
-        console.log(this.getRGB());
+        this.getRGB();
       },
       max: function (next) {
         return next + this.step > 256;
@@ -135,7 +136,7 @@ var colorNames = [
           else this.blue = blue + 1;
         }
         //
-        console.log(this.getRGB());
+        this.getRGB();
       },
     },
   });
