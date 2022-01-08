@@ -13,47 +13,55 @@
 </head>
 
 <body>
-    <div id="app" class="container">
-        <div style="height: 400px;">
-            <div class="row my-4">
+    <div id="app">
+        <div class="container" style="height: 400px;">
+            <div class="row">
                 <div v-for="color in colors" class="col">
-                    <input class="form-control" type="checkbox" v-model="checkStatus[color]" />
-                    <span class="">
-                        {{color}}
-                    </span>
-                    <input type="number" class="form-control" v-bind:value="getColor(color)"
-                        v-on:input="setColor(color,$event)" />
-                    <span class="d-inline-block w-100 h-25" :style="getBG(color)">
-                    </span>
+                    <div class="row border">
+                        <input class="col form-control" type="checkbox" v-model="checkStatus[color]" />
+                        <span class="col">
+                            {{color}}
+                        </span>
+                        <input type="number" class="col form-control" v-bind:value="getColor(color)"
+                            v-on:input="setColor(color,$event)" />
+                    </div>
+
+
+                    <div class="row" style="height: 30px;" :style="getBG(color)">
+                    </div>
                 </div>
             </div>
 
-            <div class="my-4">
-                <div>
+
+            <div id="color-change" class="row my-4">
+                <div class="col">
                     <span for="step">STEP</span>
                     <input id="step" class="form-control" type="number" v-model.number="step" />
                 </div>
-                <div id="color-change" class="row">
-
-                    <div class="col">
-                        <button class="btn btn-primary m-2" id="inc" @click="decAll()">
-                            <span>-</span>
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-primary m-2" @click="generateRandomColor()" class="random-btn">
-                            <span> random </span>
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-primary m-2" id="dec" @click="incAll()">
-                            <span>+</span>
-                        </button>
-                    </div>
+                <div class="col align-self-center">
+                    <button class="btn btn-primary  btn-sm btn-block" id="inc" @click="decAll()">
+                        <span>-</span>
+                    </button>
+                </div>
+                <div class="col align-self-center">
+                    <button class="btn btn-primary  btn-sm  btn-block" @click="generateRandomColor()"
+                        class="random-btn">
+                        <span> random </span>
+                    </button>
+                </div>
+                <div class="col align-self-center">
+                    <button class="btn btn-primary btn-block  btn-sm" id="dec" @click="incAll()">
+                        <span>+</span>
+                    </button>
+                </div>
+                <div class="col align-self-center">
+                    <button type="button" id="reset" @click="reset()" class="btn btn-danger  btn-block btn-sm">
+                        RESET
+                    </button>
                 </div>
             </div>
             <div class="h-50" id="rgb-color" :style="{background:'rgb('+red+','+green+','+blue+')'}">
-                <span v-if="colorData">
+                <div v-if="colorData" class="px-2">
                     <span :style="{color:colorData.contrast.value}">
                         {{colorData.rgb.value}}</br>
                         {{colorData.hsl.value}}</br>
@@ -63,13 +71,9 @@
                         exact match name : {{colorData.name.exact_match_name}}</br>
                         distance:{{colorData.name.distance}}</br>
                     </span>
-                </span>
+                </div>
             </div>
-            <div>
-                <button type="button" id="reset" @click="reset()" class="btn btn-danger mt-2 btn-block">
-                    RESET
-                </button>
-            </div>
+
         </div>
     </div>
 
