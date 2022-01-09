@@ -15,29 +15,33 @@
 <body>
     <div id="app">
         <div class="container" style="height: 400px;">
-            <div class="row">
-                <div v-for="color in colors" class="col">
-                    <div class="row border">
-                        <input class="col form-control" type="checkbox" v-model="checkStatus[color]" />
-                        <span class="col">
+            <div class="row mt-2 mb-4">
+                <span class="col-3" for="step">STEP</span>
+                <input class="col-3" id="step" class="form-control" type="number" v-model.number="step" />
+                <button class="col-6 btn" type="button btn-block" id="reset" @click="reset()">RESET</button>
+            </div>
+            <div v-for="color in colors" class="row my-2">
+                <div class="col">
+                    <div class="row">
+                        <input class="col-1 form-control" type="checkbox" v-model="checkStatus[color]" />
+                        <span class="col-2">
                             {{color}}
                         </span>
-                        <input type="number" class="col form-control" v-bind:value="getColor(color)"
+                        <input type="number" class="form-control col-3" v-bind:value="getColor(color)"
                             v-on:input="setColor(color,$event)" />
+                        <div class="col" style="height: 30px;" :style="getBG(color)">
+                        </div>
                     </div>
 
-
-                    <div class="row" style="height: 30px;" :style="getBG(color)">
-                    </div>
                 </div>
+
+
+
             </div>
 
 
             <div id="color-change" class="row my-4">
-                <div class="col">
-                    <span for="step">STEP</span>
-                    <input id="step" class="form-control" type="number" v-model.number="step" />
-                </div>
+
                 <div class="col align-self-center">
                     <button class="btn btn-primary  btn-sm btn-block" id="inc" @click="decAll()">
                         <span>-</span>
@@ -54,11 +58,7 @@
                         <span>+</span>
                     </button>
                 </div>
-                <div class="col align-self-center">
-                    <button type="button" id="reset" @click="reset()" class="btn btn-danger  btn-block btn-sm">
-                        RESET
-                    </button>
-                </div>
+
             </div>
             <div class="h-50" id="rgb-color" :style="{background:'rgb('+red+','+green+','+blue+')'}">
                 <div v-if="colorData" class="px-2">
