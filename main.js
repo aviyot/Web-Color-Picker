@@ -22,6 +22,7 @@ var colorNames = [
       colorData: null,
       closestColorData: null,
       colors: ["red", "green", "blue"],
+
       //cn:colorNames
     },
     mounted() {
@@ -80,6 +81,9 @@ var colorNames = [
         else this[color] -= this.step;
       },
       incAll: function () {
+        if (this.red != 255 && this.green != 255 && this.blue != 255) {
+        }
+
         if (this.checkStatus.red) this.incColor("red");
 
         if (this.checkStatus.blue) this.incColor("blue");
@@ -89,6 +93,8 @@ var colorNames = [
       },
 
       decAll: function () {
+        if (this.red != 0 && this.green != 0 && this.blue != 0) {
+        }
         if (this.checkStatus.red) this.decColor("red");
 
         if (this.checkStatus.green) this.decColor("green");
