@@ -29,7 +29,7 @@
 }
 
 .format-label {
-  width: 3.5rem;
+  width: 4.25rem;
   justify-content: center;
   font-weight: 600;
 }
@@ -40,7 +40,7 @@
 
 @media (max-width: 575.98px) {
   .format-label {
-    width: 3rem;
+    width: 3.75rem;
   }
 
   .copy-btn {

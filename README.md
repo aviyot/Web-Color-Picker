@@ -10,7 +10,7 @@ Built with [Next.js](https://nextjs.org) (App Router), React, TypeScript and [Re
 - **RGB sliders** – each slider track shows how the whole color changes along that channel.
 - **Channel lock** – switch off a channel to keep it fixed while using **− Darker**, **Random** and **+ Lighter**.
 - **Step control** – choose how much −/+ changes each active channel.
-- **Copy color codes** – HEX, RGB and HSL, each with a copy button.
+- **Copy color codes** – HEX, RGB, HSL and modern [OKLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch), each with a copy button.
 - **Closest named color** – the name, distance and a side-by-side comparison, plus a **Use it** button to jump to the exact named color.
 - **Responsive layout** – side by side on desktop, stacked on mobile.
 
@@ -58,7 +58,7 @@ components/
   ChannelSlider.tsx     Single RGB channel: lock switch, number input and slider
   CopyField.tsx         Read-only value with a copy button
 lib/
-  color.ts              Color helpers (HEX/HSL conversion, step logic, contrast)
+  color.ts              Color helpers (HEX/HSL/OKLCH conversion, step logic, contrast)
   site.ts               Site name, description and URL
 ```
 
