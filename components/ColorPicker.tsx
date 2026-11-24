@@ -20,6 +20,7 @@ import ChannelSlider from "@/components/ChannelSlider";
 import CopyField from "@/components/CopyField";
 import {
   COLORS,
+  canAdjustChannels,
   clamp,
   decValue,
   hexToRgb,
@@ -120,6 +121,8 @@ export default function ColorPicker() {
   const closestHex = colorName?.closest_named_hex.toUpperCase();
   const closestRgb = closestHex ? hexToRgb(closestHex) : null;
   const noneActive = COLORS.every((c) => !checkStatus[c]);
+  const canDecrease = canAdjustChannels(rgb, checkStatus, step, decValue);
+  const canIncrease = canAdjustChannels(rgb, checkStatus, step, incValue);
   // While loading, the shown name belongs to the previous color, so don't claim exactness.
   const nameLabel =
     !colorName || loading
@@ -291,7 +294,7 @@ export default function ColorPicker() {
                 <ButtonGroup className="w-100 mb-2" aria-label="Adjust color">
                   <Button
                     variant="primary"
-                    disabled={noneActive}
+                    disabled={!canDecrease}
                     onClick={() => updateChecked((v) => decValue(v, step))}
                     title="Decrease active channels"
                   >
@@ -306,7 +309,7 @@ export default function ColorPicker() {
                   </Button>
                   <Button
                     variant="primary"
-                    disabled={noneActive}
+                    disabled={!canIncrease}
                     onClick={() => updateChecked((v) => incValue(v, step))}
                     title="Increase active channels"
                   >

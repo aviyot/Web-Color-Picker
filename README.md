@@ -9,7 +9,7 @@ Built with [Next.js](https://nextjs.org) (App Router), React, TypeScript and [Re
 - **Large live preview** – the color name and HEX code, with text that automatically switches to stay readable on any background.
 - **RGB sliders** – each slider track shows how the whole color changes along that channel.
 - **Channel lock** – switch off a channel to keep it fixed while using **− Darker**, **Random** and **+ Lighter**.
-- **Step control** – choose how much −/+ changes each active channel.
+- **Step control** – choose how much −/+ changes each active channel. Values stop at 0 and 255, and each button is disabled when it cannot change any active channel.
 - **Copy color codes** – HEX, RGB, HSL and modern [OKLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch), each with a copy button.
 - **Closest named color** – the name, distance and a side-by-side comparison, plus a **Use it** button to jump to the exact named color.
 - **Responsive layout** – side by side on desktop, stacked on mobile.
@@ -36,6 +36,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run dev`   | Start the development server     |
 | `npm run build` | Create a production build        |
 | `npm run start` | Serve the production build       |
+| `npm test`      | Run the color adjustment tests   |
 
 ### Environment variables
 

@@ -77,12 +77,19 @@ export const isLight = ({ red, green, blue }: RGB) =>
   (0.299 * red + 0.587 * green + 0.114 * blue) / 255 > 0.6;
 
 export const incValue = (value: number, step: number) => {
-  if (value + step >= 256) return value;
-  return value === 0 ? value + step - 1 : value + step;
+  if (value === 0 && step > 1) return step - 1;
+  return Math.min(value + step, 255);
 };
 
 export const decValue = (value: number, step: number) =>
   value < step ? 0 : value - step;
+
+export const canAdjustChannels = (
+  rgb: RGB,
+  active: Record<ColorKey, boolean>,
+  step: number,
+  adjust: (value: number, step: number) => number
+) => COLORS.some((color) => active[color] && adjust(rgb[color], step) !== rgb[color]);
 
 export const randomValue = (step: number) => {
   const numOfSteps = 256 / step + 1;

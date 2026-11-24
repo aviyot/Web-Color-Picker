@@ -1,6 +1,7 @@
 .vscode/settings.json
 node_modules/
 .next/
+.test-build/
 out/
 next-env.d.ts
 *.tsbuildinfo

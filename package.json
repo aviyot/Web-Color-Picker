@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "tsc --ignoreConfig --module nodenext --moduleResolution nodenext --target es2020 --types node --skipLibCheck --outDir .test-build lib/color.ts lib/color.test.ts && node --test .test-build/color.test.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.9",
